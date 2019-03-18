@@ -1,0 +1,4 @@
+#Mon Mar 18 08:43:04 CLST 2019
+base.0=/Users/antonio/INDIMIN/app/AppMining/platforms/android/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

@@ -1,0 +1,53 @@
+<!--
+  Generated template for the GaleriaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <button ion-button icon-only menuToggle>
+        <ion-icon class="icon" name="menu"></ion-icon>
+    </button>
+    <ion-title>Razas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list class="accordion-list" no-lines>
+    <ion-list-header *ngFor="let raza of razas; let i = index" no-padding no-margin>
+      
+      <button ion-item (click)="toggleSection(i, raza)" detail-none [ngClass]="{'section-active': raza.open, 'section': !raza.open}">
+        <ion-avatar item-start>
+            <img src="{{ raza.image }}">
+        </ion-avatar>
+        <ion-icon item-right name="arrow-dropright" *ngIf="raza.subraza.length > 0 && !raza.open"></ion-icon>
+        <ion-icon item-right name="arrow-dropdown" *ngIf="raza.open"></ion-icon>
+        {{ raza.name }}
+      </button>
+
+      <ion-list *ngIf="raza.subraza.length > 0 && raza.open">
+          <ion-list-header *ngFor="let subraza of raza.subraza; let j = index" no-lines no-padding>
+            <button ion-item class="child-item" (click)="toggleItem(i,j,subraza,raza.name)">
+              <ion-icon item-left name="remove"></ion-icon>
+              {{ subraza }}
+            </button>
+          </ion-list-header>
+      </ion-list>
+
+    </ion-list-header> 
+    <!--
+      <ion-item *ngFor="let raza of razas">
+        <ion-avatar item-start>
+          <img src="{{ raza.image }}">
+        </ion-avatar>
+        <h2>{{ raza.name }}</h2>
+        <button ion-button clear item-end (click)="detailBreed(raza)">
+            <span>info </span>
+            <ion-icon name="arrow-dropright"></ion-icon>
+        </button>
+      </ion-item>
+    -->
+    </ion-list>
+</ion-content>
